@@ -6,8 +6,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>CPUUtilityHybrid</RootNamespace>
     <AssemblyName>XenoCPUUtility</AssemblyName>
-    <ApplicationVersion>1.4.1.0</ApplicationVersion>
+    <ApplicationVersion>1.5.0.0</ApplicationVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <ApplicationIcon>www\installer.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

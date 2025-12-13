@@ -1,6 +1,6 @@
 ﻿// Decompiled with JetBrains decompiler
 // Type: CPUUtilityHybrid.Program
-// Assembly: XenoCPUUtility, Version=1.4.1.0, Culture=neutral, PublicKeyToken=null
+// Assembly: XenoCPUUtility, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 8EA8C267-943B-48AB-9688-875FFCA314A8
 // Assembly location: C:\Program Files (x86)\Xeno CPU utility\XenoCPUUtility.dll
 

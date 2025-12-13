@@ -39,7 +39,7 @@ namespace CPUUtilityHybrid
 
         public Form1()
         {
-            Text = "Xeno CPU utility 1.3.0";
+            Text = "Xeno CPU utility 1.5.0";
             Width = 820;
             Height = 760;
             

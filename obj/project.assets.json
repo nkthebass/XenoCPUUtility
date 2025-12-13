@@ -85,6 +85,74 @@
           }
         }
       }
+    },
+    "net8.0-windows7.0/win-x64": {
+      "Microsoft.Web.WebView2/1.0.1901.177": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Core.dll": {
+            "related": ".xml"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.WinForms.dll": {
+            "related": ".xml"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Core.dll": {
+            "related": ".xml"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.WinForms.dll": {
+            "related": ".xml"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.dll": {
+            "related": ".xml"
+          }
+        },
+        "native": {
+          "runtimes/win-x64/native/WebView2Loader.dll": {}
+        },
+        "build": {
+          "build/Microsoft.Web.WebView2.targets": {}
+        }
+      },
+      "System.CodeDom/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/System.CodeDom.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.CodeDom.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Management/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.CodeDom": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net7.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -246,11 +314,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\XenoCPUUtility.csproj",
+      "projectUniqueName": "C:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\XenoCPUUtility.csproj",
       "projectName": "XenoCPUUtility",
-      "projectPath": "c:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\XenoCPUUtility.csproj",
+      "projectPath": "C:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\XenoCPUUtility.csproj",
       "packagesPath": "C:\\Users\\Noah\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\obj\\",
+      "outputPath": "C:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Noah\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -330,6 +398,11 @@
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
       }
     }
   }
