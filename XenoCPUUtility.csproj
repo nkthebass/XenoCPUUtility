@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>CPUUtilityHybrid</RootNamespace>
+    <AssemblyName>XenoCPUUtility</AssemblyName>
+    <ApplicationVersion>1.4.1.0</ApplicationVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="LibreHardwareMonitorLib">
+      <HintPath>lib\LibreHardwareMonitorLib.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1901.177" />
+    <PackageReference Include="System.Management" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="www\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="lib\CPUUtilityNative.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('lib\CPUUtilityNative.dll')" />
+    <Content Include="lib\Microsoft.VisualBasic.Forms.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('lib\Microsoft.VisualBasic.Forms.dll')" />
+    <Content Include="lib\System.Collections.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('lib\System.Collections.dll')" />
+    <Content Include="lib\System.Drawing.Common.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('lib\System.Drawing.Common.dll')" />
+    <Content Include="lib\System.Runtime.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('lib\System.Runtime.dll')" />
+    <Content Include="lib\System.Runtime.InteropServices.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('lib\System.Runtime.InteropServices.dll')" />
+    <Content Include="lib\System.Text.Json.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('lib\System.Text.Json.dll')" />
+    <Content Include="lib\System.Windows.Forms.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('lib\System.Windows.Forms.dll')" />
+  </ItemGroup>
+</Project>
