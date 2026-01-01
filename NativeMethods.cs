@@ -322,17 +322,13 @@ public static class NativeMethods
       double normalization = normalizeForSingle ? 624_000d : 115_000d;
       double score = operationsPerSecond / normalization;
 
-      if (!normalizeForSingle)
-      {
-        score *= Math.Pow(threads, 0.35d);
-      }
+      // Removed thread multiplier for more authentic multi-core score
 
       return Math.Round(Math.Max(score, 0d), 1);
     }
   }
 
   private sealed class HardwareMetricsProvider
-  : IDisposable
   {
     private readonly object sync = new();
     private readonly PerformanceCounter? cpuCounter;
@@ -417,36 +413,6 @@ public static class NativeMethods
       {
         return 0;
       }
-    }
-
-    public void Dispose()
-    {
-      lock (sync)
-      {
-        try
-        {
-          cpuCounter?.Dispose();
-        }
-        catch
-        {
-          // Swallow dispose exceptions to avoid throwing during app shutdown.
-        }
-      }
-    }
-  }
-
-  /// <summary>
-  /// Dispose any long-lived providers (call at app shutdown).
-  /// </summary>
-  public static void Shutdown()
-  {
-    try
-    {
-      MetricsProvider.Dispose();
-    }
-    catch
-    {
-      // ignore
     }
   }
 

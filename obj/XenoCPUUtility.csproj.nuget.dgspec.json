@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\XenoCPUUtility.csproj": {}
+    "C:\\Users\\noahc\\OneDrive\\Desktop\\XenoCPUUtility - Copy\\XenoCPUUtility.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\XenoCPUUtility.csproj": {
-      "version": "1.0.0",
+    "C:\\Users\\noahc\\OneDrive\\Desktop\\XenoCPUUtility - Copy\\XenoCPUUtility.csproj": {
+      "version": "1.6.3",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\XenoCPUUtility.csproj",
+        "projectUniqueName": "C:\\Users\\noahc\\OneDrive\\Desktop\\XenoCPUUtility - Copy\\XenoCPUUtility.csproj",
         "projectName": "XenoCPUUtility",
-        "projectPath": "C:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\XenoCPUUtility.csproj",
-        "packagesPath": "C:\\Users\\Noah\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Noah\\OneDrive\\Desktop\\New folder\\XenoCPUUtility\\obj\\",
+        "projectPath": "C:\\Users\\noahc\\OneDrive\\Desktop\\XenoCPUUtility - Copy\\XenoCPUUtility.csproj",
+        "packagesPath": "C:\\Users\\noahc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\noahc\\OneDrive\\Desktop\\XenoCPUUtility - Copy\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Noah\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\noahc\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0-windows"
@@ -37,13 +37,18 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.22, )",
+              "autoReferenced": true
+            },
             "Microsoft.Web.WebView2": {
               "target": "Package",
               "version": "[1.0.1901.177, )"
@@ -66,19 +71,15 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Ref",
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
               "version": "[8.0.22, 8.0.22]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
               "version": "[8.0.22, 8.0.22]"
             },
             {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
               "version": "[8.0.22, 8.0.22]"
             }
           ],
@@ -90,7 +91,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

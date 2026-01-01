@@ -30,13 +30,12 @@ namespace CPUUtilityHybrid
         private CancellationTokenSource? ramStressCts;
         private Task? ramStressTask;
         private bool ramStressActive;
-        
         private const byte RamPatternA = 0xAA;
         private const byte RamPatternB = 0x55;
 
         public Form1()
         {
-            Text = "Xeno CPU utility 1.6.0";
+            Text = "Xeno CPU utility 1.6.3";
             Width = 820;
             Height = 760;
             
@@ -53,7 +52,6 @@ namespace CPUUtilityHybrid
             
             webView = new WebView2 { Dock = DockStyle.Fill };
             Controls.Add(webView);
-
             Load += Form1_Load;
             FormClosing += Form1_FormClosing;
             
@@ -64,33 +62,6 @@ namespace CPUUtilityHybrid
                 IsMotherboardEnabled = true
             };
             computer.Open();
-        }
-
-        
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == Keys.F1)
-            {
-                try
-                {
-                    string helpPath = Path.Combine(Path.GetTempPath(), "CPUUtilityHybrid", "www", "help.html");
-                    if (File.Exists(helpPath))
-                    {
-                        webView.CoreWebView2.Navigate(new Uri(helpPath).AbsoluteUri);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Help page not found: {helpPath}", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    return true; // Key handled
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"Error opening help page: {ex.Message}");
-                }
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void Form1_FormClosing(object? sender, FormClosingEventArgs e)
@@ -114,12 +85,7 @@ namespace CPUUtilityHybrid
         private async void Form1_Load(object? sender, EventArgs e)
         {
             appDir = AppDomain.CurrentDomain.BaseDirectory;
-            
-            // Extract embedded www resources to temp folder
-            var wwwTempFolder = Path.Combine(Path.GetTempPath(), "CPUUtilityHybrid", "www");
-            ExtractEmbeddedResources(wwwTempFolder);
-            
-            var userDataFolder = Path.Combine(Path.GetTempPath(), "CPUUtilityHybrid", "webview_" + Guid.NewGuid().ToString());
+            var userDataFolder = Path.Combine(Path.GetTempPath(), "CPUUtilityHybrid", Guid.NewGuid().ToString());
             Directory.CreateDirectory(userDataFolder);
 
             var env = await CoreWebView2Environment.CreateAsync(null, userDataFolder);
@@ -129,7 +95,7 @@ namespace CPUUtilityHybrid
             webView.CoreWebView2.Settings.AreDevToolsEnabled = true;
             webView.CoreWebView2.Settings.AreDefaultContextMenusEnabled = true;
 
-            var indexPath = Path.Combine(wwwTempFolder, "index.html");
+            var indexPath = Path.Combine(appDir, "www", "index.html");
             if (File.Exists(indexPath))
             {
                 webView.CoreWebView2.Navigate(new Uri(indexPath).AbsoluteUri);
@@ -137,41 +103,6 @@ namespace CPUUtilityHybrid
             else
             {
                 MessageBox.Show($"Could not find index.html at: {indexPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ExtractEmbeddedResources(string targetFolder)
-        {
-            try
-            {
-                Directory.CreateDirectory(targetFolder);
-                var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-                var resources = assembly.GetManifestResourceNames();
-                
-                var wwwResources = resources.Where(r => r.StartsWith("CPUUtilityHybrid.www.")).ToArray();
-
-                foreach (var resourceName in wwwResources)
-                {
-                    // Format: CPUUtilityHybrid.www.index.html -> index.html
-                    // Format: CPUUtilityHybrid.www.help.html -> help.html
-                    var fileName = resourceName.Replace("CPUUtilityHybrid.www.", "");
-                    var targetPath = Path.Combine(targetFolder, fileName);
-
-                    using (var stream = assembly.GetManifestResourceStream(resourceName))
-                    {
-                        if (stream != null)
-                        {
-                            using (var fileStream = File.Create(targetPath))
-                            {
-                                stream.CopyTo(fileStream);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error extracting resources: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
