@@ -37,7 +37,7 @@ and stress testing.
 - Configurable thread counts (up to high-core-count CPUs)
 - Floating-point and integer workload coverage
 - Designed for Intel, AMD, and ARM architectures
-- Lightweight, no background services
+- Lightweight, no background services.
 
 ## Official Repository
 This repository is the **official source** for XenoCPUUtility.
