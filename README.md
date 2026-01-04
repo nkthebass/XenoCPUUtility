@@ -32,11 +32,11 @@ and deterministic workloads suitable for benchmarking, validation,
 and stress testing.
 
 ## Features
-- Deterministic CPU benchmarking workloads
-- Single-core and multi-core scaling tests
+- Deterministic CPU benchmarking workloads.
+- Single-core and multi-core scaling tests.
 - Configurable thread counts (up to high-core-count CPUs)
-- Floating-point and integer workload coverage
-- Designed for Intel, AMD, and ARM architectures
+- Floating-point and integer workload coverage.
+- Designed for Intel, AMD, and ARM architectures.
 - Lightweight, no background services.
 
 ## Official Repository
