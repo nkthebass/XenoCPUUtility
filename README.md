@@ -1,5 +1,10 @@
 ![Status](https://img.shields.io/badge/status-active-success)
 
+⚠️ Security Notice  
+XenoCPUUtility does not distribute ZIP-based installers or binaries from
+third-party links. If you encounter downloads that do not function or behave
+unexpectedly, they are not official.
+
 # XenoCPUUtility
 
 ⭐ **Official XenoCPUUtility Repository**
