@@ -1,3 +1,5 @@
+![Status](https://img.shields.io/badge/status-active-success)
+
 # XenoCPUUtility
 
 ⭐ **Official XenoCPUUtility Repository**
@@ -15,13 +17,30 @@ installers**.
 **Official releases and working downloads are available only from this repository.**
 
 ---
-This is the XenoCPUUtility I made to provide a quick, easy, and reliable CPU benchmarking software
-for both multicore and single core along with a built in variable thread and ram stress test this software becomes somewhat useful.
+XenoCPUUtility is a **CPU benchmarking and stress testing utility**
+designed to measure **single-core and multi-core performance**,
+thread scaling, floating-point throughput, integer workload behavior,
+and sustained CPU stability across modern processors.
 
-How does the benchmarking work? The program makes your CPU run calculations over a set amount of time then takes the OPS and generates a score like 121.98 for example,
-the software then takes your score and puts it on the single or multicore benchmarking bar-graph-chart accesable through the graphing tab on the right side of the GUI.
-The graphing tab also provides real-time CPU speed, frequency and ram usage graphs below the performance charts.
-The tab above it is the settings tab that provides the you with the ability to change the color of the GUI text and windows.
-The next tab up is the ram stress testing tab that provides real time data while the ram stress test is running on how much data is flowing and the amount of errors found (hopefully none)
+It supports **Intel, AMD, and ARM CPUs**, with configurable thread counts
+and deterministic workloads suitable for benchmarking, validation,
+and stress testing.
 
-Join my new discord server here! https://discord.gg/xwjYsukW
+## Features
+- Deterministic CPU benchmarking workloads
+- Single-core and multi-core scaling tests
+- Configurable thread counts (up to high-core-count CPUs)
+- Floating-point and integer workload coverage
+- Designed for Intel, AMD, and ARM architectures
+- Lightweight, no background services
+
+## Official Repository
+This repository is the **official source** for XenoCPUUtility.
+
+Other repositories using the same name are **third-party copies** and may:
+- Lack proper releases
+- Contain broken installers
+- Be outdated or unmaintained
+
+For correct behavior and official builds, use this repository only.
+
