@@ -4,7 +4,10 @@ This is the original and actively maintained project by the author.
 
 Other repositories with the same name are third-party copies.
 
-
+⚠️ **Project name & branding notice**
+The name **"XenoCPUUtility"** refers to this original project.
+Third-party copies or redistributions must not present themselves as the
+official source or imply authorship
 
 This is the XenoCPUUtility I made to provide a quick, easy, and reliable CPU benchmarking software
 for both multicore and single core along with a built in variable thread and ram stress test this software becomes somewhat useful.
