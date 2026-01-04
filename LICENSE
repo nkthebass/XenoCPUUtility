@@ -1,34 +1,18 @@
-XenoCPUUtility License (Personal & Educational Use Only) v1.0
-
-Copyright (c) [2026] [Noah C Kever]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to use
-the Software **solely for personal or educational purposes**. 
-
-All other rights are reserved. Specifically:
-
-1. **Redistribution and Forks**
-   - You may NOT create or publish a fork, copy, or repository containing
-     XenoCPUUtility under the same or confusingly similar name, except for
-     personal or educational use. 
-   - Any fork or derivative project must **rename the software clearly** and
-     include attribution to the original author.
-
-2. **Commercial Use**
-   - You may NOT use the Software for commercial purposes, including but not
-     limited to selling, licensing, or bundling in paid products.
-
-3. **Attribution**
-   - You must retain this license and all copyright notices in the Software.
-   - All public forks or derivative works must include a notice stating that
-     it is a derivative of XenoCPUUtility by [Noah C Kever].
-
-4. **Disclaimer**
-   - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-     OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-
----
-
-By using the Software, you agree to comply with all terms of this license.
+XenoCPUUtility License (Proprietary & Restricted Use) v1.0
+​Copyright (c) 2026 Noah C Kever. All Rights Reserved.
+​1. PERMITTED USE
+Permission is hereby granted to individuals to download and use this Software solely for personal, non-commercial, and educational purposes. Any use by or for the benefit of a commercial entity, or use intended for monetary gain, is strictly prohibited without express written consent from Noah C Kever.
+​2. PROHIBITION ON REDISTRIBUTION & MIRRORING
+​No Public Mirrors: You may NOT redistribute, publish, or mirror this Software on any website, marketplace, or public repository.
+​Forking Policy: While GitHub’s interface allows for "forking," any public fork of this repository must be for personal development or educational contribution only. Hosting a 1:1 mirror of the source code for the purpose of redistribution is a violation of this license.
+​3. BRANDING & TRADEMARK PROTECTION
+​Mandatory Renaming: Any derivative work or modified version of this Software must be renamed to something distinct and non-confusingly similar to "XenoCPUUtility."
+​Proprietary Name: The name "XenoCPUUtility" and its associated branding are the proprietary trade names of Noah C Kever. You may not use this name to promote, host, or distribute any version of the software not authored by Noah C Kever.
+​No Impersonation: You may not present any copy or fork of this software in a way that implies it is the official, endorsed, or original version.
+​4. DERIVATIVE WORKS & ATTRIBUTION
+If you modify the Software for permitted personal/educational use:
+​You must retain this original license and copyright notice in all copies.
+​You must include a prominent notice stating: "This is a derivative work based on XenoCPUUtility by Noah C Kever."
+​You may not claim authorship of the original codebase.
+​5. DISCLAIMER OF LIABILITY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR, NOAH C KEVER, BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
