@@ -7,6 +7,8 @@ unexpectedly, they are not official.
 
 # XenoCPUUtility
 
+*note as of 1.7.1 this utility does not supports 1st Gen intel or older or athlon/ phenom 2 cpus or older. I will come out with a legacy support version in the future.
+
 ⭐ **Official XenoCPUUtility Repository**
 
 This is the **original and actively maintained** XenoCPUUtility project by the author.
