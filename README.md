@@ -43,6 +43,7 @@ and stress testing.
 - Designed for Intel, AMD, and ARM architectures.
 - Lightweight, no background services.
 - Ram stress testing from 256mb's of ram to 128gb's
+- Supports 2nd gen and newer intel along with AMD fx cpus and newer
 
 ## Official Repository
 This repository is the **official source** for XenoCPUUtility.
