@@ -55,7 +55,7 @@ and stress testing.
 * i7-6700: 39.5
 * Ryzen 5 3600: 41
 * i7-5960X 4.3GHz: 43.5
-* Core i5-210H: 60
+* Core 5-210H: 60
 * Ryzen 7 7700X: 65
 * Ryzen 5 7600X: 65
 * Ryzen 9 9950X: 72
@@ -64,7 +64,7 @@ and stress testing.
 * i5-7200U: 105
 * i7-4770K: 215
 * i7-6700: 230
-* Core i5-210H: 515
+* Core 5-210H: 515
 * i7-5960X 4.3GHz: 530
 * Ryzen 5 7600X: 685
 * Ryzen 9 9950X: 1700
