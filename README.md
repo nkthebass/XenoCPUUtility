@@ -24,7 +24,12 @@ the official source or imply authorship or endorsement.
 Third-party redistributions of this project exist. Some provide **broken or defective
 installers**.  
 **Official releases and working downloads are available only from this repository.**
-
+---
+**ℹ️ System requirements**
+* windows 10-11
+* atleast 2gbs of ram
+* atleast 200mbs of free storage
+* Intel 2nd Gen/amd fx or newer cpu
 ---
 XenoCPUUtility is a **CPU benchmarking and stress testing utility**
 designed to measure **single-core and multi-core performance**,
