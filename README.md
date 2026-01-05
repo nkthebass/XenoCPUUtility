@@ -42,6 +42,7 @@ and stress testing.
 - Floating-point and integer workload coverage.
 - Designed for Intel, AMD, and ARM architectures.
 - Lightweight, no background services.
+- Ram stress testing from 256mb's of ram to 128gb's
 
 ## Official Repository
 This repository is the **official source** for XenoCPUUtility.
