@@ -1,18 +1,120 @@
-XenoCPUUtility License (Proprietary & Restricted Use) v1.0
-​Copyright (c) 2026 Noah C Kever. All Rights Reserved.
-​1. PERMITTED USE
-Permission is hereby granted to individuals to download and use this Software solely for personal, non-commercial, and educational purposes. Any use by or for the benefit of a commercial entity, or use intended for monetary gain, is strictly prohibited without express written consent from Noah C Kever.
-​2. PROHIBITION ON REDISTRIBUTION & MIRRORING
-​No Public Mirrors: You may NOT redistribute, publish, or mirror this Software on any website, marketplace, or public repository.
-​Forking Policy: While GitHub’s interface allows for "forking," any public fork of this repository must be for personal development or educational contribution only. Hosting a 1:1 mirror of the source code for the purpose of redistribution is a violation of this license.
-​3. BRANDING & TRADEMARK PROTECTION
-​Mandatory Renaming: Any derivative work or modified version of this Software must be renamed to something distinct and non-confusingly similar to "XenoCPUUtility."
-​Proprietary Name: The name "XenoCPUUtility" and its associated branding are the proprietary trade names of Noah C Kever. You may not use this name to promote, host, or distribute any version of the software not authored by Noah C Kever.
-​No Impersonation: You may not present any copy or fork of this software in a way that implies it is the official, endorsed, or original version.
-​4. DERIVATIVE WORKS & ATTRIBUTION
-If you modify the Software for permitted personal/educational use:
-​You must retain this original license and copyright notice in all copies.
-​You must include a prominent notice stating: "This is a derivative work based on XenoCPUUtility by Noah C Kever."
-​You may not claim authorship of the original codebase.
-​5. DISCLAIMER OF LIABILITY
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR, NOAH C KEVER, BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+# **XenoCPUUtility License**
+
+**Proprietary & Restricted Use – GitHub-Specific**
+**Version 1.1**
+
+Copyright (c) 2026 Noah C Kever
+**All Rights Reserved**
+
+---
+
+## 1. OWNERSHIP & GRANT OF RIGHTS
+
+XenoCPUUtility (the “Software”) is the proprietary intellectual property of **Noah C Kever**.
+
+Permission is granted to individuals to **view, download, and run** the Software **solely for personal, non-commercial, and non-monetized educational use**.
+
+All other rights are reserved.
+No rights are granted by implication, estoppel, or GitHub platform features.
+
+---
+
+## 2. PROHIBITED USES
+
+The following are **strictly prohibited** without prior **written consent** from Noah C Kever:
+
+* Commercial use of any kind
+* Use by or for the benefit of a business, organization, or monetized platform
+* Selling, sublicensing, renting, or licensing the Software
+* Using the Software as part of a paid product, service, benchmark suite, or review tool
+* Training, testing, or benchmarking for commercial or competitive purposes
+
+---
+
+## 3. REDISTRIBUTION, MIRRORING & FORKS
+
+### ❌ No Redistribution
+
+You may **NOT** redistribute, re-upload, publish, mirror, or host the Software or its source code, in whole or in part, on any platform.
+
+This includes but is not limited to:
+
+* GitHub repositories
+* GitHub forks
+* GitHub mirrors
+* Archives, re-uploads, or backups
+* Third-party websites or marketplaces
+
+### ❌ Forking Is Not Permission
+
+GitHub’s “Fork” feature is a **platform function**, not a license grant.
+
+* **Public forks are NOT permitted**
+* **Private forks are NOT permitted**
+* Any fork, mirror, or clone hosted outside the original repository is considered unauthorized redistribution
+
+---
+
+## 4. DERIVATIVE WORKS (LIMITED EXCEPTION)
+
+You may modify the Software **locally** for personal or educational experimentation **only** if all of the following conditions are met:
+
+* The modified version is **never redistributed**
+* The modified version is **never published**
+* The modified version is **never shared publicly or privately**
+* The original copyright and license remain intact
+
+Any derivative work that is shared, uploaded, or published **immediately becomes an unauthorized redistribution**.
+
+---
+
+## 5. NAME, BRANDING & IMPERSONATION
+
+The name **“XenoCPUUtility”**, its branding, and identifiers are proprietary trade names of Noah C Kever.
+
+You may NOT:
+
+* Use the name “XenoCPUUtility” for any fork, copy, or modified version
+* Present any copy as official, endorsed, or maintained by Noah C Kever
+* Impersonate the original repository, author, or project identity
+
+Any attempt to confuse users or present a clone as legitimate constitutes impersonation.
+
+---
+
+## 6. ATTRIBUTION REQUIREMENTS
+
+Where attribution is legally required (e.g., private academic reference):
+
+* You must credit: **“XenoCPUUtility by Noah C Kever”**
+* You may not claim authorship of the original Software
+* Attribution does **not** grant redistribution rights
+
+---
+
+## 7. NO OPEN-SOURCE GRANT
+
+This Software is **NOT open source**.
+
+* This license is **not OSI-approved**
+* Public availability does **not** imply permission to copy, fork, or redistribute
+* GitHub hosting does **not** override these terms
+
+---
+
+## 8. ENFORCEMENT & TERMINATION
+
+Any violation of this license:
+
+* Automatically terminates all permissions granted herein
+* Constitutes unauthorized use and copyright infringement
+
+The author reserves the right to request takedown, removal, or legal enforcement against violators.
+
+---
+
+## 9. DISCLAIMER OF WARRANTY & LIABILITY
+
+THE SOFTWARE IS PROVIDED **“AS IS”**, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+
+IN NO EVENT SHALL NOAH C KEVER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OR MISUSE OF THE SOFTWARE.
