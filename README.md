@@ -11,6 +11,7 @@ By nkthebass
 
 ⭐ **Official XenoCPUUtility Repository**
 By nkthebass
+Find it at https://github.com/nkthebass/XenoCPUUtility
 
 This is the **original and actively maintained** XenoCPUUtility project by the author.
 
@@ -44,6 +45,7 @@ and stress testing.
 
 ## Official Repository
 This repository is the **official source** for XenoCPUUtility.
+Find it at https://github.com/nkthebass/XenoCPUUtility
 
 Other repositories using the same name are **third-party copies** and may:
 - Lack proper releases
@@ -53,3 +55,4 @@ Other repositories using the same name are **third-party copies** and may:
 For correct behavior and official builds, use this repository only.
 
 XenoCPUUTility is created by nkthebass on github
+Find it at https://github.com/nkthebass/XenoCPUUtility
