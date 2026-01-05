@@ -38,7 +38,7 @@ and stress testing.
 ## Features
 - Deterministic CPU benchmarking workloads.
 - Single-core and multi-core scaling tests.
-- Configurable thread counts (up to high-core-count CPUs)
+- Configurable thread counts (up to 64 threads or 32 cores)
 - Floating-point and integer workload coverage.
 - Designed for Intel, AMD, and ARM architectures.
 - Lightweight, no background services.
