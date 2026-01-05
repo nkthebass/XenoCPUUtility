@@ -5,11 +5,12 @@ XenoCPUUtility does not distribute ZIP-based installers or binaries from
 third-party links. If you encounter downloads that do not function or behave
 unexpectedly, they are not official.
 
-# XenoCPUUtility
-
+# XenoCPUUtility 
+By nkthebass
 *note as of 1.7.1 this utility does not supports 1st Gen intel or older or athlon/ phenom 2 cpus or older. I will come out with a legacy support version in the future.
 
 ⭐ **Official XenoCPUUtility Repository**
+By nkthebass
 
 This is the **original and actively maintained** XenoCPUUtility project by the author.
 
@@ -51,3 +52,4 @@ Other repositories using the same name are **third-party copies** and may:
 
 For correct behavior and official builds, use this repository only.
 
+XenoCPUUTility is created by nkthebass on github
