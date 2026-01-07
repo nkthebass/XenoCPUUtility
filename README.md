@@ -16,7 +16,7 @@ Find it at https://github.com/nkthebass/XenoCPUUtility
 This is the **original and actively maintained** XenoCPUUtility project by the author.
 
 ⚠️ **Project name & branding notice**  
-The name **“XenoCPUUtility”** refers exclusively to this original project.  
+The name **"XenoCPUUtility"** refers exclusively to this original project.  
 Third-party copies, forks, or redistributions must **not** present themselves as
 the official source or imply authorship or endorsement.
 
@@ -49,6 +49,12 @@ and stress testing.
 - Lightweight, no background services.
 - Ram stress testing from 256mb's of ram to 128gb's
 - Supports 2nd gen and newer intel along with AMD fx cpus and newer
+- Extended CPU warmup with 8-second heavy load stress and thermal stabilization
+- Outlier detection with visual highlighting for anomalous runs
+- Enhanced between-run delays for better thermal recovery
+- Detailed About section with benchmark methodology guidance
+- Improved UI with smooth gradient backgrounds and refined animations
+- Optimized scoring calibration for accurate single-core and multi-core measurements
 
 ##Benchmarked CPU's
 
