@@ -1,6 +1,6 @@
 # XenoCPUUtility
 ![Status](https://img.shields.io/badge/status-active-success)
-![Version](https://img.shields.io/badge/version-1.7.2-blue)
+![Version](https://img.shields.io/badge/version-1.8.0-blue)
 ![Official](https://img.shields.io/badge/Official-Original_Source-red)
 
 > **Official Repository:** [https://github.com/nkthebass/XenoCPUUtility](https://github.com/nkthebass/XenoCPUUtility)  
