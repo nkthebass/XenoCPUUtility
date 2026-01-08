@@ -29,11 +29,13 @@ It features **deterministic workloads**, real-time hardware monitoring, CPU inst
 ## Features
 
 ### 🎯 Benchmarking
-- **Single-Core Benchmark:** Measures peak single-thread floating-point performance (1.8s duration)
-- **Multi-Core Benchmark:** Aggregates all CPU threads for total throughput (0.8s duration)
+- **Single-Core Benchmark:** Measures peak single-thread floating-point performance
+- **Multi-Core Benchmark:** Aggregates all CPU threads for total throughput
+- **Path Tracing Benchmark**  Measures path tracing performance with thread configurability 
 - **Configurable Runs:** Average multiple benchmark runs for stability
 - **CPU Comparison Charts:** Compare your score against 11+ reference CPUs (horizontally and vertically scrollable)
 - **Histogram Distribution:** Visualize score variance across runs
+  
 
 ### 💪 Stress Testing
 - **Heavy Load Mode:** Continuous sqrt/sin/cos workload for sustained 95-100% CPU saturation
@@ -175,3 +177,4 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
