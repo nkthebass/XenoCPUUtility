@@ -106,22 +106,11 @@ It features **deterministic workloads**, real-time hardware monitoring, CPU inst
 ## Installation
 
 ### Download & Setup
-1. Download `XenoCPUUtility.exe` and the `www` folder
-2. Place both in the same directory
+1. Download `XenoCPUUtility.exe.zip`
+2. unzip
 3. Run `XenoCPUUtility.exe`
 
-**Directory structure:**
 ```
-YourFolder/
-├── XenoCPUUtility.exe
-└── www/
-    ├── index.html
-    └── chart.4.4.1.min.js
-```
-
-⚠️ **Important:** The `www` folder must be in the same location as the executable for the app to function properly.
-
----
 
 ## Usage
 
@@ -177,5 +166,6 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
 
 
