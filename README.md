@@ -46,7 +46,7 @@ It features **deterministic workloads**, real-time hardware monitoring, CPU inst
 
 ### ⚡ Hardware Monitoring & Diagnostics
 - **WHEA Error Tab:** Real-time Windows Hardware Error Architecture (WHEA) event monitoring for CPU instability detection
-- **Real-Time Metrics:** CPU utilization, RAM usage, temperature, voltage
+- **Real-Time Metrics:** CPU utilization, RAM usage
 - **Alerts Tab:** Event logging and system health notifications
 - **CPU Info Panel:** Hardware details (model, max clock, core/thread count)
 
@@ -177,4 +177,5 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
 
