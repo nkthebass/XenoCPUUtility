@@ -6,13 +6,15 @@ XenoCPUUtility does not distribute ZIP-based installers or binaries from third-p
 # XenoCPUUtility 
 By nkthebass  
 ⭐ **Official Repository:** https://github.com/nkthebass/XenoCPUUtility
+---
+This project does take use of "vibe coding" rest be assured it is far from being "AI slop".
 
 ---
 
 ## Overview
 XenoCPUUtility is a **comprehensive CPU benchmarking and stress testing utility** designed to measure single-core and multi-core performance, thread scaling, floating-point throughput, integer workload behavior, and sustained CPU stability across modern processors.
 
-It features **deterministic workloads**, real-time hardware monitoring, CPU instability detection (WHEA errors), and configurable stress testing modes for validation and overclocking verification.
+It features **deterministic workloads**, real-time hardware monitoring, CPU instability detection (WHEA errors), and configurable stress testing modes for validation and overclocking verification. 
 
 ---
 
@@ -166,6 +168,7 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
 
 
 
