@@ -1,4 +1,4 @@
-![Status](https://img.shields.io/badge/status-active-success) ![Version](https://img.shields.io/badge/version-1.9.1-blue)
+![Status](https://img.shields.io/badge/status-active-success) ![Version](https://img.shields.io/badge/version-1.9.2-blue)
 
 ⚠️ **Security Notice**  
 XenoCPUUtility does not distribute ZIP-based installers or binaries from third-party links. If you encounter downloads that do not function or behave unexpectedly, they are not official.
@@ -168,6 +168,7 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
 
 
 
