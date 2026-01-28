@@ -8,7 +8,7 @@ By nkthebass
 ⭐ **Official Repository:** https://github.com/nkthebass/XenoCPUUtility
 ---
 This project does take use of "vibe coding" rest be assured it is far from being "AI slop".
-
+Please contact me at nkthebass@gmail.com for any questions or issues and requests if any.
 ---
 
 ## Overview
@@ -66,6 +66,7 @@ It features **deterministic workloads**, real-time hardware monitoring, CPU inst
 
 ## Benchmarked CPUs
 
+(note these scores may vary for some people please contact me at nkthebass@gmail.com if you see issues with provided scores)
 ### Single-Core Scores
 * FX-4300: 19
 * i5-7200U: 31.5
@@ -87,6 +88,7 @@ It features **deterministic workloads**, real-time hardware monitoring, CPU inst
 * i7-5960X 4.3GHz: 530
 * Ryzen 5 7600X: 685
 * Ryzen 9 9950X: 1700
+* ryzen 5 3600: 460
 
 ---
 
@@ -168,6 +170,7 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
 
 
 
