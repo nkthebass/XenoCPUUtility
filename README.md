@@ -7,9 +7,9 @@ XenoCPUUtility does not distribute ZIP-based installers or binaries from third-p
 By nkthebass  
 ⭐ **Official Repository:** https://github.com/nkthebass/XenoCPUUtility
 ---
-This project does take use of "vibe coding" rest be assured it is far from being "AI slop".
-Please contact me at nkthebass@gmail.com for any questions or issues and requests if any.
+This project does take use of "vibe coding" rest be assured it is far from being "AI slop". ---
 ---
+Please contact me at nkthebass@gmail.com for any questions or issues and requests if any
 
 ## Overview
 XenoCPUUtility is a **comprehensive CPU benchmarking and stress testing utility** designed to measure single-core and multi-core performance, thread scaling, floating-point throughput, integer workload behavior, and sustained CPU stability across modern processors.
@@ -170,6 +170,7 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
 
 
 
