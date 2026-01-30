@@ -7,6 +7,10 @@ XenoCPUUtility does not distribute ZIP-based installers or binaries from third-p
 By nkthebass  
 ⭐ **Official Repository:** https://github.com/nkthebass/XenoCPUUtility
 ---
+
+**BIG ANNOUNCEMENT**
+I just released a legacy version compatible with window XP and newer CPU's from 1998-date should be compatible check it out here: https://github.com/nkthebass/XenoCPUUtility-legacy
+
 This project does take use of "vibe coding" rest be assured it is far from being "AI slop". ---
 ---
 Please contact me at nkthebass@gmail.com for any questions or issues and requests if any
@@ -170,6 +174,7 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
 
 
 
