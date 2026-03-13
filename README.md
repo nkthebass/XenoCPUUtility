@@ -28,7 +28,7 @@ It features **deterministic workloads**, real-time hardware monitoring, CPU inst
 * **Storage:** 200MB free space
 * **CPU:** Intel 2nd Gen or newer, AMD FX or newer (or ARM-compatible)
 
-*Note: As of v1.9.0, legacy CPU support (Intel 1st Gen, AMD Phenom/Athlon K10) is not included. A legacy version is planned for future release.*
+*Note: As of v1.9.0, legacy CPU support (Intel 1st Gen, AMD Phenom/Athlon K10) is not included. A legacy version is avalible on my profile.*
 
 ---
 
@@ -174,6 +174,7 @@ This helps improve the reference database for future versions.
 **GitHub:** https://github.com/nkthebass/XenoCPUUtility
 
 Created by nkthebass
+
 
 
 
