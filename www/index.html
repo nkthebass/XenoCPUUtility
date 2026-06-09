@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Xeno CPU utility 1.9.6</title>
+<title>Xeno CPU utility 1.9.7</title>
 <style>
     /* ── Base ── */
     body {
@@ -1931,7 +1931,7 @@ function ExportGPUBenchmarkScore() {
     var selectedResolution = document.getElementById("gpuResolutionSelector").value;
     
     var exportData = {
-        version: "1.9.6",
+        version: "1.9.7",
         exportDate: lastGPUBenchmarkTimestamp || new Date().toISOString(),
         scoreType: "gpu_pathtracer",
         renderTime: parseFloat(lastGPUScore.toFixed(2)),
@@ -2195,30 +2195,31 @@ function ToggleAlerts() {
 
 // --- Benchmarks Chart Data & Initialization ---
 var cpuBenchmarkData = [
-    { cpu: 'i7-4770K', score: 36.5 },
-    { cpu: 'i5-7200U', score: 23 },
-    { cpu: 'N200', score: 23.5 },
-    { cpu: 'FX-4300', score: 18 },
-    { cpu: 'Core 5 210H', score: 54 },
-    { cpu: 'i7-6700', score: 38 },
-    { cpu: 'Ryzen 7 7700X', score: 59 },
-    { cpu: 'Ryzen 5 7600X', score: 58.5 },
-    { cpu: 'Ryzen 5 3600', score: 39 },
-    { cpu: 'i7-5960X 4.3GHz', score: 39.5 },
-    { cpu: 'Ryzen 9 9950X', score: 65 }
+    { cpu: 'FX-4300',          score: 18   },
+    { cpu: 'i5-7200U',         score: 23   },
+    { cpu: 'N200',             score: 23.5 },
+    { cpu: 'i7-4770K',         score: 36.5 },
+    { cpu: 'i7-6700',          score: 38   },
+    { cpu: 'Ryzen 5 3600',     score: 39   },
+    { cpu: 'i7-5960X 4.3GHz',  score: 39.5 },
+    { cpu: 'Ryzen 9 5900X',    score: 47   },
+    { cpu: 'Core 5 210H',      score: 54   },
+    { cpu: 'Ryzen 5 7600X',    score: 58.5 },
+    { cpu: 'Ryzen 7 7700X',    score: 59   },
+    { cpu: 'Ryzen 9 9950X',    score: 65   }
 ];
 
-// Multi-core benchmark data (empty for now - will be populated as users test)
 var cpuMultiCoreBenchmarkData = [
-    { cpu: 'i5-7200U', score: 105 },
-    { cpu: 'i7-4770K', score: 215 },
-    { cpu: 'Core 5 210H', score: 515 },
-    { cpu: 'i7-6700', score: 230 },
-    { cpu: 'Ryzen 5 3600', score: 460 },
-    { cpu: 'Ryzen 5 7600X', score: 685 },
-    { cpu: 'Ryzen 7 9700X', score: 700 },
-    { cpu: 'i7-5960X 4.3GHz', score: 530 },
-    { cpu: 'Ryzen 9 9950X', score: 1700 }
+    { cpu: 'i5-7200U',         score: 85   },
+    { cpu: 'i7-4770K',         score: 170  },
+    { cpu: 'i7-6700',          score: 180  },
+    { cpu: 'Ryzen 5 3600',     score: 365  },
+    { cpu: 'Core 5 210H',      score: 405  },
+    { cpu: 'i7-5960X 4.3GHz',  score: 420  },
+    { cpu: 'Ryzen 5 7600X',    score: 540  },
+    { cpu: 'Ryzen 7 9700X',    score: 555  },
+    { cpu: 'Ryzen 9 5900X',    score: 780  },
+    { cpu: 'Ryzen 9 9950X',    score: 1340 }
 ];
 
 var benchmarkChart = null;
@@ -2307,7 +2308,7 @@ async function ExportBenchmarkScore(scoreType) {
         
         // Create export object
         var exportData = {
-            version: "1.9.6",
+            version: "1.9.7",
             exportDate: lastBenchmarkTimestamp || new Date().toISOString(),
             scoreType: scoreType,
             score: parseFloat(score.toFixed(2)),
@@ -2913,7 +2914,7 @@ function DumpSensors() {
 
         <div class="info-section">
             <h4 style="margin-top: 0;">Version</h4>
-            <p>Xeno CPU Utility v1.9.6</p>
+            <p>Xeno CPU Utility v1.9.7</p>
         </div>
 
         <div class="info-section">

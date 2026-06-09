@@ -6,7 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>CPUUtilityHybrid</RootNamespace>
     <AssemblyName>XenoCPUUtility</AssemblyName>
-    <ApplicationVersion>1.9.6.0</ApplicationVersion>
+    <ApplicationVersion>1.9.7.0</ApplicationVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ApplicationIcon>www\installer.ico</ApplicationIcon>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>

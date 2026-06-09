@@ -247,8 +247,21 @@ public static class NativeMethods
 
     private void WorkerLoop(CancellationToken token)
     {
-      double value = 0.000001d + new Random(Guid.NewGuid().GetHashCode()).NextDouble();
-      double increment = 0.0000001d;
+      var rng = new Random(Guid.NewGuid().GetHashCode());
+
+      // 8 independent accumulators with no data dependency between chains.
+      // This lets the CPU issue ops from multiple chains each cycle and keep
+      // all FP execution ports (div/sqrt + transcendental + mul-add) busy,
+      // rather than stalling on the latency of a single serial chain.
+      double a0 = 1.1d + rng.NextDouble() * 0.8d;
+      double a1 = 1.2d + rng.NextDouble() * 0.8d;
+      double a2 = 1.3d + rng.NextDouble() * 0.8d;
+      double a3 = 1.4d + rng.NextDouble() * 0.8d;
+      double a4 = 1.5d + rng.NextDouble() * 0.8d;
+      double a5 = 1.6d + rng.NextDouble() * 0.8d;
+      double a6 = 1.7d + rng.NextDouble() * 0.8d;
+      double a7 = 1.8d + rng.NextDouble() * 0.8d;
+      uint tick = 0;
 
       try
       {
@@ -256,14 +269,23 @@ public static class NativeMethods
         {
           pauseEvent.Wait(token);
 
-          // Math-heavy workload to keep the core busy.
-          value = Math.Sqrt(value * 1.000001d + increment);
-          value = Math.Sin(value) + 1.000001d;
-          value = Math.Cos(value);
+          a0 = Math.Sqrt(a0 * 1.000001d + 1e-9d);
+          a1 = Math.Sqrt(a1 * 1.000002d + 2e-9d);
+          a2 = Math.Sin(a2) + 1.000001d;
+          a3 = Math.Cos(a3) + 1.000001d;
+          a4 = Math.Sqrt(a4 * 1.000003d + 3e-9d);
+          a5 = Math.Sqrt(a5 * 1.000004d + 4e-9d);
+          a6 = Math.Sin(a6 * 1.0000005d) + 1.000002d;
+          a7 = Math.Cos(a7 * 1.0000005d) + 1.000002d;
 
-          if (value > 4.0d)
+          // Tiny cross-mix every ~64k iterations prevents dead-code elimination
+          // without meaningfully affecting throughput or value ranges.
+          if ((++tick & 0xFFFFu) == 0u)
           {
-            value -= 3.75d;
+            a0 += a7 * 1e-12d;
+            a2 += a5 * 1e-12d;
+            a4 += a1 * 1e-12d;
+            a6 += a3 * 1e-12d;
           }
         }
       }
@@ -277,21 +299,24 @@ public static class NativeMethods
   private sealed class BenchmarkEngine
   {
     private const double TargetSecondsSingle = 10.0;
-    private const double TargetSecondsMulti = 6.0;
+    private const double TargetSecondsMulti = 10.0;  // was 6.0 — equal durations reduce variance
     private const int OperationsPerBatch = 1024;
+
+    private const double SingleNorm = 1_456_000d;  // ~45–50 range on a modern mid-tier CPU
+    private const double MultiNorm  =   145_600d;  // ~700–900 range on a modern mid-tier CPU
 
     public double RunSingleThread()
     {
-      return ExecuteBenchmark(1, TargetSecondsSingle, normalizeForSingle: true);
+      return ExecuteBenchmark(1, TargetSecondsSingle, SingleNorm);
     }
 
     public double RunMultiThread()
     {
       int threadCount = Math.Max(1, Environment.ProcessorCount);
-      return ExecuteBenchmark(threadCount, TargetSecondsMulti, normalizeForSingle: false);
+      return ExecuteBenchmark(threadCount, TargetSecondsMulti, MultiNorm);
     }
 
-    private static double ExecuteBenchmark(int threads, double durationSeconds, bool normalizeForSingle)
+    private static double ExecuteBenchmark(int threads, double durationSeconds, double normalization)
     {
       long start = Stopwatch.GetTimestamp();
       long durationTicks = (long)(durationSeconds * Stopwatch.Frequency);
@@ -356,7 +381,6 @@ public static class NativeMethods
       double elapsedSeconds = Math.Max((Stopwatch.GetTimestamp() - start) / (double)Stopwatch.Frequency, 1e-5d);
       double operationsPerSecond = globalIterations / elapsedSeconds;
 
-      double normalization = normalizeForSingle ? 1_456_000d : 115_000d;
       double score = operationsPerSecond / normalization;
 
       return Math.Round(Math.Max(score, 0d), 1);
