@@ -6,7 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>CPUUtilityHybrid</RootNamespace>
     <AssemblyName>XenoCPUUtility</AssemblyName>
-    <ApplicationVersion>1.9.2.0</ApplicationVersion>
+    <ApplicationVersion>1.9.6.0</ApplicationVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ApplicationIcon>www\installer.ico</ApplicationIcon>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
@@ -21,9 +21,18 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1901.177" />
     <PackageReference Include="System.Management" Version="7.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="www\**\*" />
   </ItemGroup>
+
+  <!-- Compile HLSL shaders -->
+  <Target Name="CompileShaders" BeforeTargets="Build">
+    <Exec Command="fxc.exe /T cs_5_0 /Fo bin\RayTraceShader.cso RayTraceShader.hlsl" ContinueOnError="true" />
+    <ItemGroup>
+      <EmbeddedResource Include="bin\RayTraceShader.cso" />
+    </ItemGroup>
+  </Target>
 </Project>

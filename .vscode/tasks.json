@@ -1,0 +1,1002 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Publish single-file EXE (Release, win-x64)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true",
+				"/p:AssemblyVersion=1.6.3.0",
+				"/p:FileVersion=1.6.3.0",
+				"/p:Version=1.6.3"
+			],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Re-publish single-file EXE (Release, win-x64, 1.6.3)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true",
+				"/p:AssemblyVersion=1.6.3.0",
+				"/p:FileVersion=1.6.3.0",
+				"/p:Version=1.6.3"
+			],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Re-publish single-file EXE (Release, win-x64, 1.6.3, thread options)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true",
+				"/p:AssemblyVersion=1.6.3.0",
+				"/p:FileVersion=1.6.3.0",
+				"/p:Version=1.6.3"
+			],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Re-publish single-file EXE (multicore run scores)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true",
+				"/p:AssemblyVersion=1.6.3.0",
+				"/p:FileVersion=1.6.3.0",
+				"/p:Version=1.6.3"
+			],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Re-publish single-file EXE (multicore individual scores backend)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true",
+				"/p:AssemblyVersion=1.6.3.0",
+				"/p:FileVersion=1.6.3.0",
+				"/p:Version=1.6.3"
+			],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Re-publish single-file EXE (multicore run-averaged scores)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true",
+				"/p:AssemblyVersion=1.6.3.0",
+				"/p:FileVersion=1.6.3.0",
+				"/p:Version=1.6.3"
+			],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Final publish (multicore histogram 1 run)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true",
+				"/p:AssemblyVersion=1.6.3.0",
+				"/p:FileVersion=1.6.3.0",
+				"/p:Version=1.6.3"
+			],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Rebuild - multicore accumulates",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Rebuild - Fix multicore scaling",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Rebuild - Fix timer bottleneck (batch 1024)",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Rebuild with debug output",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Rebuild - Add start barrier",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Rebuild - Fix timing declaration",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"/p:DebugType=None",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Rebuild with debug symbols",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.6.4 Release EXE",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.6.4 - Adjusted normalization",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.6.4 - Instability stress",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.6.4 Final - Instability + Heavy Load",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.6.4 - Visible idle dips",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.6.4 with About Tab",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.0",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.0 Final",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.0 with WHEA Tab",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Tab Sync",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Multicore Graph Fix",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Your CPU Score Fix",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Score Scale Fixed",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Multicore Scale Final",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - CPU Score Scaling Fix",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Score No Scaling",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Multicore Comparison Data Scaled",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Score Adjustments",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Updated CPU Scores",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - i5-7200U Score Update",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Multicore Score Updates",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Scrollable Chart",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Dynamic Chart Width",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Larger Chart",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Different Chart Heights",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Adjusted Chart Size",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.1 - Non-Scrollable Chart",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.2",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Clean Build",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"clean"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - Fix File Not Found",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Clean",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"clean"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - Embedded www",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Clean",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"clean"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - SinCos Optimization",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - Sorted Threads",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - Add R7 9700X",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - Smaller Graph Labels",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true",
+				"/p:IncludeAllContentForSelfExtract=true",
+				"/p:PublishTrimmed=false",
+				"--self-contained",
+				"true"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - Fix Settings Color Editor",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - Single File Only",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true"
+			]
+		},
+		{
+			"label": "Publish v1.7.2 - Clean Single File",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true"
+			]
+		},
+		{
+			"label": "Publish v1.7.3 - Export Feature",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true"
+			]
+		},
+		{
+			"label": "Publish v1.7.3 Final",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true"
+			]
+		},
+		{
+			"label": "Publish v1.7.3 - Export Fix",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"/p:PublishSingleFile=true"
+			]
+		}
+	]
+}

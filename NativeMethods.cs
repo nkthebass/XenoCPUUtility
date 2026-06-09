@@ -356,13 +356,8 @@ public static class NativeMethods
       double elapsedSeconds = Math.Max((Stopwatch.GetTimestamp() - start) / (double)Stopwatch.Frequency, 1e-5d);
       double operationsPerSecond = globalIterations / elapsedSeconds;
 
-      double normalization = normalizeForSingle ? 1_456_000d : 230_000d;
+      double normalization = normalizeForSingle ? 1_456_000d : 115_000d;
       double score = operationsPerSecond / normalization;
-
-      if (!normalizeForSingle)
-      {
-        score *= Math.Pow(threads, 0.35d);
-      }
 
       return Math.Round(Math.Max(score, 0d), 1);
     }
@@ -374,21 +369,62 @@ public static class NativeMethods
     private readonly PerformanceCounter? cpuCounter;
     private readonly Lazy<int> baseClockMHz;
 
+    // State for GetSystemTimes delta-based CPU calculation
+    private long prevIdle;
+    private long prevKernel;
+    private long prevUser;
+    private bool prevValid;
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct FILETIME
+    {
+      public uint Low;
+      public uint High;
+      public long ToInt64() => ((long)High << 32) | Low;
+    }
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool GetSystemTimes(out FILETIME lpIdle, out FILETIME lpKernel, out FILETIME lpUser);
+
     public HardwareMetricsProvider()
     {
       cpuCounter = TryCreateCounter();
       baseClockMHz = new Lazy<int>(ReadBaseClock, LazyThreadSafetyMode.ExecutionAndPublication);
+
+      // Prime performance counter (first NextValue() always returns 0)
+      if (cpuCounter != null)
+      {
+        try { cpuCounter.NextValue(); } catch { }
+      }
+
+      // Establish baseline for GetSystemTimes delta
+      if (GetSystemTimes(out var i, out var k, out var u))
+      {
+        prevIdle = i.ToInt64();
+        prevKernel = k.ToInt64();
+        prevUser = u.ToInt64();
+        prevValid = true;
+      }
     }
 
     public bool TryGetMetrics(out HardwareMetrics metrics)
     {
       metrics = default;
 
-      double cpuLoad = SampleCpuLoad();
+      // GetSystemTimes: direct kernel32 call, no service dependencies, always works
+      double cpuLoad = SampleCpuLoadSystemTimes();
+
+      // Fallback: Windows performance counter
       if (double.IsNaN(cpuLoad))
-      {
+        cpuLoad = SampleCpuLoad();
+
+      // Last resort: WMI LoadPercentage
+      if (double.IsNaN(cpuLoad))
+        cpuLoad = SampleCpuLoadWmi();
+
+      if (double.IsNaN(cpuLoad))
         return false;
-      }
 
       metrics.cpuLoad = Math.Clamp(cpuLoad, 0d, 100d);
       metrics.cpuFreqMHz = baseClockMHz.Value;
@@ -397,6 +433,36 @@ public static class NativeMethods
       metrics.packagePowerW = double.NaN;
       metrics.isValid = true;
       return true;
+    }
+
+    private double SampleCpuLoadSystemTimes()
+    {
+      if (!GetSystemTimes(out var idleFt, out var kernelFt, out var userFt))
+        return double.NaN;
+
+      long idle = idleFt.ToInt64();
+      long kernel = kernelFt.ToInt64();
+      long user = userFt.ToInt64();
+
+      lock (sync)
+      {
+        if (!prevValid)
+        {
+          prevIdle = idle; prevKernel = kernel; prevUser = user;
+          prevValid = true;
+          return double.NaN;
+        }
+
+        long dIdle = idle - prevIdle;
+        long dKernel = kernel - prevKernel;
+        long dUser = user - prevUser;
+
+        prevIdle = idle; prevKernel = kernel; prevUser = user;
+
+        long total = dKernel + dUser;
+        if (total <= 0) return 0d;
+        return Math.Max(0d, (total - dIdle) / (double)total * 100d);
+      }
     }
 
     private PerformanceCounter? TryCreateCounter()
@@ -414,24 +480,35 @@ public static class NativeMethods
     private double SampleCpuLoad()
     {
       if (cpuCounter == null)
-      {
         return double.NaN;
-      }
 
       lock (sync)
       {
-        try
+        try { return cpuCounter.NextValue(); }
+        catch { return double.NaN; }
+      }
+    }
+
+    private static double SampleCpuLoadWmi()
+    {
+      try
+      {
+        using var searcher = new ManagementObjectSearcher("select LoadPercentage from Win32_Processor");
+        double sum = 0;
+        int count = 0;
+        foreach (var obj in searcher.Get().Cast<ManagementObject>())
         {
-          // First call often returns 0, so sample twice when possible.
-          double value = cpuCounter.NextValue();
-          Thread.Sleep(50);
-          value = cpuCounter.NextValue();
-          return value;
+          if (obj["LoadPercentage"] != null && ushort.TryParse(obj["LoadPercentage"].ToString(), out var load))
+          {
+            sum += load;
+            count++;
+          }
         }
-        catch
-        {
-          return double.NaN;
-        }
+        return count > 0 ? sum / count : double.NaN;
+      }
+      catch
+      {
+        return double.NaN;
       }
     }
 

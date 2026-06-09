@@ -33,7 +33,7 @@ namespace CPUUtilityHybrid
 
         public Form1()
         {
-            Text = "Xeno CPU utility 1.9.5";
+            Text = "Xeno CPU utility 1.9.6";
             Width = 820;
             Height = 760;
             
@@ -1129,12 +1129,12 @@ namespace CPUUtilityHybrid
                                 
                                 var result = new
                                 {
+                                    success = true,
                                     CpuLoad = metrics.cpuLoad,
                                     CpuFreqMHz = metrics.cpuFreqMHz,
                                     RamUsedGB = ramUsedGB,
                                     RamTotalGB = ramTotalGB,
-                                    RamUsagePercent = ramUsagePercent,
-                                    Timestamp = DateTime.UtcNow
+                                    RamUsagePercent = ramUsagePercent
                                 };
                                 
                                 BeginInvoke(new Action(() => Reply(id, cmd, result)));

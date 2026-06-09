@@ -2,325 +2,395 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Xeno CPU utility 1.9.3</title>
+<title>Xeno CPU utility 1.9.6</title>
 <style>
-    /* General Styles */
+    /* ── Base ── */
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        /* Smooth vertical 3-color gradient background, always fills viewport */
         background: linear-gradient(180deg, var(--bg-grad1, #e0e7ff) 0%, var(--bg-grad2, #f0f0f0) 50%, var(--bg-grad3, #ffe0e7) 100%);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: 100vw 100vh;
         color: #333;
-        padding: 15px;
+        padding: 15px 15px 40px;
         margin: 0;
         min-height: 100vh;
-        overflow-y: auto; 
-        position: relative; 
+        overflow-y: auto;
+        position: relative;
     }
-    
+
     .main-container {
-        width: 600px; 
+        width: 610px;
         position: absolute;
-        left: 50%; 
-        margin-left: -300px; 
+        left: 50%;
+        margin-left: -305px;
         background-color: transparent;
-        border-radius: 5px; 
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        padding: 20px;
+        padding: 20px 0;
         box-sizing: border-box;
         text-align: left;
     }
-    
-    .panel { padding: 20px 0; text-align: center; margin-bottom: 20px; border-bottom: 1px solid #e0e0e0; }
-    .panel:last-child { border-bottom: none; margin-bottom: 0; }
 
-    h1 { font-size: 1.4em; color: #0056b3; margin-bottom: 5px; padding-bottom: 8px; font-weight: 700; text-transform: uppercase; }
-    .status-text { margin: 15px 0 25px; font-size: 1.1em; font-weight: bold; min-height: 20px; color: #0056b3; }
-    .button-group { display: flex; justify-content: center; gap: 10px; }
-    .button-group button { background-color: #007bff; color: white; border: none; padding: 10px 18px; border-radius: 4px; cursor: pointer; transition: background-color 0.2s, transform 0.1s; font-size: 0.9em; font-weight: 600; min-width: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);} 
-    .button-group button:hover { background-color: #0056b3; }
-    .button-group button:active { transform: scale(0.98); }
-    #stopBtn { background-color: #dc3545; }
-    #stopBtn:hover { background-color: #c82333; }
-    button:disabled { background-color: #a0a0a0 !important; cursor: not-allowed; box-shadow: none; }
+    /* ── Glass panels ── */
+    .panel {
+        padding: 26px 28px;
+        text-align: center;
+        margin-bottom: 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.68);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.88);
+        border-top: 3px solid #007bff;
+        box-shadow: 0 8px 30px rgba(0, 86, 179, 0.10), 0 1px 4px rgba(0,0,0,0.05);
+        transition: box-shadow 0.22s ease;
+    }
+    .panel:hover {
+        box-shadow: 0 12px 40px rgba(0, 86, 179, 0.16), 0 2px 6px rgba(0,0,0,0.07);
+    }
+    .panel:last-child { margin-bottom: 0; }
 
-    .run-count-control { margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
-    #runCountInput { padding: 5px 10px; border-radius: 3px; border: 1px solid #ccc; margin-left: 10px; font-size: 1em; width: 50px; text-align: center; }
-    .cores-control { margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
-    #coresInput { padding: 5px 10px; border-radius: 3px; border: 1px solid #ccc; margin-left: 10px; font-size: 1em; width: 60px; text-align: center; }
-    .score-display { font-size: 3em; font-weight: 800; color: #0056b3; margin: 15px 0; display: block; }
+    /* ── Typography ── */
+    h1 {
+        font-size: 1.15em;
+        color: #0056b3;
+        margin: 0 0 4px;
+        padding-bottom: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid rgba(0, 86, 179, 0.12);
+    }
+    p { margin: 8px 0 14px; color: #555; font-size: 0.9em; line-height: 1.5; }
 
-    .static-info-container { margin-top: 25px; padding: 15px; background-color: #f9f9f9; border-radius: 5px; text-align: left; }
-    .static-info-container h2 { font-size: 1.1em; color: #0056b3; margin-bottom: 10px; border-bottom: 1px dashed #cceeff; padding-bottom: 5px; }
-    .static-specs { display: flex; justify-content: space-around; margin-top: 10px; font-size: 0.9em; }
-    .static-specs div { background-color: #e6ffe6; padding: 6px 10px; border-radius: 3px; flex: 1; margin: 0 5px; text-align: center; }
-    .static-specs strong { display: block; font-size: 1em; color: #28a745; }
+    .status-text {
+        margin: 14px 0 20px;
+        font-size: 1em;
+        font-weight: 700;
+        min-height: 18px;
+        color: #0056b3;
+        padding: 8px 12px;
+        background: rgba(0, 86, 179, 0.06);
+        border-radius: 8px;
+        border-left: 3px solid #007bff;
+        text-align: left;
+    }
 
-    .progress-bar-wrapper { width: 80%; margin: 20px auto 0; background-color: #e9ecef; border-radius: 10px; overflow: hidden; border: 1px solid #ced4da; box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); position: relative; }
-    .progress-bar { height: 20px; background-color: #17a2b8; width: 0%; transition: width 0.05s linear; }
-    #progressText { position: absolute; width: 100%; text-align: center; line-height: 20px; color: #000; font-weight: 700; top: 0; font-size: 0.9em; z-index: 10; }
-    /* Sidebar Toggle Buttons */
+    /* ── Buttons ── */
+    .button-group { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+
+    .button-group button, button#benchBtn, button#multiBenchBtn, button#ptBenchBtn {
+        background: linear-gradient(135deg, #1a8cff 0%, #0056b3 100%);
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.18s ease;
+        font-size: 0.88em;
+        font-weight: 700;
+        min-width: 105px;
+        box-shadow: 0 3px 10px rgba(0,123,255,0.28), 0 1px 3px rgba(0,0,0,0.08);
+        letter-spacing: 0.01em;
+    }
+    .button-group button:hover, button#benchBtn:hover, button#multiBenchBtn:hover, button#ptBenchBtn:hover {
+        background: linear-gradient(135deg, #3399ff 0%, #006acc 100%);
+        box-shadow: 0 5px 16px rgba(0,123,255,0.38), 0 2px 5px rgba(0,0,0,0.10);
+        transform: translateY(-2px);
+    }
+    .button-group button:active, button#benchBtn:active, button#multiBenchBtn:active, button#ptBenchBtn:active {
+        transform: translateY(0) scale(0.97);
+        box-shadow: 0 2px 6px rgba(0,123,255,0.25);
+    }
+
+    #stopBtn {
+        background: linear-gradient(135deg, #ff4d5e 0%, #c0192a 100%) !important;
+        box-shadow: 0 3px 10px rgba(220,53,69,0.30), 0 1px 3px rgba(0,0,0,0.08) !important;
+    }
+    #stopBtn:hover {
+        background: linear-gradient(135deg, #ff6070 0%, #d92030 100%) !important;
+        box-shadow: 0 5px 16px rgba(220,53,69,0.40) !important;
+    }
+
+    #startInstabilityBtn {
+        background: linear-gradient(135deg, #ff8c00 0%, #cc5500 100%) !important;
+        box-shadow: 0 3px 10px rgba(255,140,0,0.28), 0 1px 3px rgba(0,0,0,0.08) !important;
+    }
+    #startInstabilityBtn:hover {
+        background: linear-gradient(135deg, #ffa020 0%, #e06010 100%) !important;
+        box-shadow: 0 5px 16px rgba(255,140,0,0.40) !important;
+    }
+
+    button:disabled {
+        background: linear-gradient(135deg, #b8c0cc 0%, #9aa3ae 100%) !important;
+        cursor: not-allowed !important;
+        box-shadow: none !important;
+        transform: none !important;
+        opacity: 0.7;
+    }
+
+    /* ── Form controls ── */
+    .stress-control-row {
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .stress-control-row label { font-weight: 600; font-size: 0.88em; color: #444; }
+
+    select, input[type="number"] {
+        padding: 7px 12px;
+        border-radius: 9px;
+        border: 1.5px solid #c5d3e8;
+        background: rgba(255,255,255,0.82);
+        font-size: 0.88em;
+        color: #333;
+        outline: none;
+        transition: border-color 0.18s, box-shadow 0.18s;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.06) inset;
+    }
+    select:focus, input[type="number"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0,123,255,0.14), 0 1px 3px rgba(0,0,0,0.06) inset;
+    }
+
+    .run-count-control { margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    #runCountInput { width: 56px; text-align: center; }
+    .cores-control { margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    #coresInput { width: 66px; text-align: center; }
+    .run-count-control label, .cores-control label { font-weight: 600; font-size: 0.88em; color: #444; }
+
+    /* ── Score display ── */
+    .score-display {
+        font-size: 3.4em;
+        font-weight: 900;
+        color: #0056b3;
+        margin: 10px 0 14px;
+        display: block;
+        text-shadow: 0 2px 12px rgba(0, 86, 179, 0.22);
+        letter-spacing: -0.02em;
+    }
+
+    /* ── Progress bar ── */
+    .progress-bar-wrapper {
+        width: 88%;
+        margin: 18px auto 0;
+        background: rgba(0,0,0,0.07);
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.06);
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+        position: relative;
+        height: 22px;
+    }
+    .progress-bar {
+        height: 22px;
+        background: linear-gradient(90deg, #17c8d4 0%, #1a8cff 60%, #0056b3 100%);
+        width: 0%;
+        transition: width 0.07s linear;
+        border-radius: 14px;
+    }
+    #progressText {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        line-height: 22px;
+        color: #fff;
+        font-weight: 800;
+        top: 0;
+        font-size: 0.82em;
+        z-index: 10;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+        letter-spacing: 0.02em;
+    }
+
+    /* ── CPU info cards ── */
+    .static-info-container {
+        margin-top: 22px;
+        padding: 16px 18px;
+        background: rgba(0, 86, 179, 0.05);
+        border-radius: 14px;
+        text-align: left;
+        border: 1px solid rgba(0, 86, 179, 0.14);
+    }
+    .static-info-container h2 {
+        font-size: 0.88em;
+        color: #0056b3;
+        margin: 0 0 10px;
+        border-bottom: 1px solid rgba(0,86,179,0.14);
+        padding-bottom: 6px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+    .static-specs { display: flex; justify-content: space-around; margin-top: 10px; font-size: 0.87em; gap: 8px; }
+    .static-specs div {
+        background: rgba(40, 167, 69, 0.09);
+        padding: 10px 8px;
+        border-radius: 12px;
+        flex: 1;
+        text-align: center;
+        border: 1px solid rgba(40, 167, 69, 0.22);
+        transition: background 0.2s, transform 0.15s;
+    }
+    .static-specs div:hover { background: rgba(40, 167, 69, 0.16); transform: translateY(-1px); }
+    .static-specs strong { display: block; font-size: 1.1em; color: #1a7a34; margin-top: 3px; font-weight: 800; }
+
+    /* ── Sidebar toggle strip ── */
     .sidebar-toggle-row {
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 2px;
         position: fixed;
         right: 0;
-        top: 40%;
+        top: 38%;
         z-index: 9999;
     }
-
     .sidebar-toggle-row button {
-        background: #007bff;
+        background: rgba(0, 100, 220, 0.82);
         color: #fff;
-        padding: 8px 10px;
+        padding: 11px 13px;
         border: none;
         cursor: pointer;
+        font-size: 1em;
         font-weight: 700;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        transition: background 0.2s;
+        box-shadow: -3px 0 12px rgba(0,0,0,0.15);
+        transition: background 0.18s, transform 0.15s;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
     }
+    .sidebar-toggle-row button:first-child { border-top-left-radius: 10px; }
+    .sidebar-toggle-row button:last-child  { border-bottom-left-radius: 10px; }
+    .sidebar-toggle-row button.active { background: rgba(0, 70, 160, 0.95); }
+    .sidebar-toggle-row button:hover { background: rgba(0, 80, 180, 0.96); transform: translateX(-3px); }
 
-    .sidebar-toggle-row button:first-child { border-top-left-radius: 6px; }
-    .sidebar-toggle-row button:last-child { border-bottom-left-radius: 6px; }
-    .sidebar-toggle-row button.active { background: #0056b3; }
-    .sidebar-toggle-row button:hover { background: #0056b3; }
-
-    .custom-sidebar {
+    /* ── Sidebars (shared base) ── */
+    .custom-sidebar, .benchmarks-sidebar, .alerts-sidebar, .whea-sidebar, .about-sidebar {
         position: fixed;
-        right: 0;
-        top: 0;
+        right: 0; top: 0;
         height: 100%;
-        width: 320px;
-        max-width: 90%;
-        background: #ffffff;
-        box-shadow: -6px 0 18px rgba(0,0,0,0.15);
+        width: 330px;
+        max-width: 92%;
+        background: rgba(252, 253, 255, 0.97);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        box-shadow: -8px 0 36px rgba(0,86,179,0.13), -1px 0 0 rgba(0,86,179,0.08);
         transform: translateX(100%);
-        transition: transform 0.25s ease-in-out;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 9998;
-        padding: 18px;
+        padding: 22px 20px;
         box-sizing: border-box;
         overflow-y: auto;
+        border-left: 3px solid #007bff;
     }
+    .custom-sidebar.open, .benchmarks-sidebar.open, .alerts-sidebar.open,
+    .whea-sidebar.open, .about-sidebar.open { transform: translateX(0%); }
 
-    .custom-sidebar.open { transform: translateX(0%); }
-
-    .custom-sidebar h3 { margin-top: 0; color: #0056b3; }
-    .custom-sidebar label { display: block; margin-top: 10px; font-weight: 600; font-size: 0.95em; }
-    .custom-sidebar input[type="color"] { margin-top: 6px; width: 60px; height: 34px; border: none; padding: 0; background: none; cursor: pointer; }
-    .custom-sidebar .preset-row { display:flex; gap:8px; margin-top:10px; }
-    .custom-sidebar button { margin-top: 12px; padding: 8px 10px; border-radius:4px; border:none; cursor:pointer; }
-    .custom-sidebar .save-btn { background:#28a745; color:#fff; }
-    .custom-sidebar .reset-btn { background:#dc3545; color:#fff; margin-left:8px; }
-
-    /* Benchmarks Sidebar */
-    .benchmarks-sidebar {
-        position: fixed;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 320px;
-        max-width: 90%;
-        background: #ffffff;
-        box-shadow: -6px 0 18px rgba(0,0,0,0.15);
-        transform: translateX(100%);
-        transition: transform 0.25s ease-in-out;
-        z-index: 9998;
-        padding: 18px;
-        box-sizing: border-box;
-        overflow-y: auto;
+    /* Sidebar section headers */
+    .custom-sidebar h3, .benchmarks-sidebar h3, .about-sidebar h3 {
+        margin: 0 0 14px; color: #0056b3;
+        font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+        border-bottom: 2px solid rgba(0,86,179,0.14); padding-bottom: 8px;
     }
-
-    .benchmarks-sidebar.open { transform: translateX(0%); }
-    .benchmarks-sidebar h3 { margin-top: 0; color: #0056b3; }
-    .benchmarks-sidebar canvas { max-width: 100%; margin-top: 12px; display: block; }
-
-    .alerts-sidebar {
-        position: fixed;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 320px;
-        max-width: 90%;
-        background: #ffffff;
-        box-shadow: -6px 0 18px rgba(0,0,0,0.15);
-        transform: translateX(100%);
-        transition: transform 0.25s ease-in-out;
-        z-index: 9998;
-        padding: 18px;
-        box-sizing: border-box;
-        overflow-y: auto;
+    .alerts-sidebar h3 {
+        margin: 0 0 14px; color: #b91c1c;
+        font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+        border-bottom: 2px solid rgba(185,28,28,0.14); padding-bottom: 8px;
     }
-
-    .alerts-sidebar.open { transform: translateX(0%); }
-    .alerts-sidebar h3 { margin-top: 0; color: #b22222; }
-    .alerts-summary { margin-top: 12px; font-size: 0.9em; color: #666; line-height: 1.4; }
-    .alerts-sidebar .alerts-clear-btn {
-        margin-top: 14px;
-        padding: 8px 10px;
-        border-radius: 4px;
-        border: none;
-        cursor: pointer;
-        background: #6c757d;
-        color: #fff;
-        font-weight: 600;
+    .whea-sidebar h3 {
+        margin: 0 0 14px; color: #c0392b;
+        font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+        border-bottom: 2px solid rgba(192,57,43,0.14); padding-bottom: 8px;
     }
-    .alerts-sidebar .alerts-clear-btn:hover { background: #5a636a; }
-
-    /* WHEA Sidebar */
-    .whea-sidebar {
-        position: fixed;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 320px;
-        max-width: 90%;
-        background: #ffffff;
-        box-shadow: -6px 0 18px rgba(0,0,0,0.15);
-        transform: translateX(100%);
-        transition: transform 0.25s ease-in-out;
-        z-index: 9998;
-        padding: 18px;
-        box-sizing: border-box;
-        overflow-y: auto;
+    .benchmarks-sidebar h4, .alerts-sidebar h4 {
+        color: #0056b3; margin: 18px 0 6px;
+        font-size: 0.85em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
     }
+    .benchmarks-sidebar canvas { max-width: 100%; margin-top: 10px; display: block; border-radius: 8px; }
 
-    .whea-sidebar.open { transform: translateX(0%); }
-    .whea-sidebar h3 { margin-top: 0; color: #d9534f; }
-    .whea-sidebar h4 { color: #d9534f; margin-top: 14px; margin-bottom: 8px; font-size: 0.95em; }
-    .whea-sidebar p { font-size: 0.9em; color: #666; line-height: 1.4; }
+    /* Customization sidebar */
+    .custom-sidebar label { display: block; margin-top: 12px; font-weight: 600; font-size: 0.88em; color: #555; }
+    .custom-sidebar input[type="color"] { margin-top: 6px; width: 58px; height: 34px; border: none; padding: 0; background: none; cursor: pointer; border-radius: 6px; }
+    .custom-sidebar button { margin-top: 12px; padding: 9px 16px; border-radius: 9px; border: none; cursor: pointer; font-weight: 700; font-size: 0.88em; transition: all 0.18s; }
+    .custom-sidebar .save-btn  { background: linear-gradient(135deg, #2dbd55, #1a8a38); color: #fff; box-shadow: 0 3px 10px rgba(40,167,69,0.28); }
+    .custom-sidebar .save-btn:hover  { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(40,167,69,0.38); }
+    .custom-sidebar .reset-btn { background: linear-gradient(135deg, #e84050, #b91c2c); color: #fff; margin-left: 8px; box-shadow: 0 3px 10px rgba(220,53,69,0.28); }
+    .custom-sidebar .reset-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(220,53,69,0.38); }
+
+    /* Alerts / WHEA sidebars */
+    .alerts-summary {
+        margin-top: 10px; font-size: 0.85em; color: #555; line-height: 1.5;
+        padding: 10px 12px; background: rgba(0,0,0,0.03); border-radius: 10px;
+    }
+    .alerts-sidebar .alerts-clear-btn, .whea-sidebar .whea-clear-btn {
+        margin-top: 14px; padding: 9px 16px; border-radius: 9px; border: none;
+        cursor: pointer; font-weight: 700; font-size: 0.87em; transition: all 0.18s;
+    }
+    .alerts-sidebar .alerts-clear-btn { background: #5a6474; color: #fff; }
+    .alerts-sidebar .alerts-clear-btn:hover { background: #484f5c; transform: translateY(-1px); }
+    .whea-sidebar .whea-clear-btn { background: linear-gradient(135deg, #e84050, #b91c2c); color: #fff; box-shadow: 0 3px 10px rgba(192,57,43,0.28); }
+    .whea-sidebar .whea-clear-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(192,57,43,0.38); }
+
+    .whea-sidebar h4 { color: #c0392b; margin: 14px 0 6px; font-size: 0.85em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+    .whea-sidebar p { font-size: 0.87em; color: #555; line-height: 1.5; }
     .whea-sidebar .whea-error-list { margin-top: 10px; }
-    .whea-sidebar .whea-error-item { background-color: #fff3cd; padding: 8px; margin-bottom: 8px; border-radius: 3px; border-left: 3px solid #d9534f; font-size: 0.85em; color: #333; }
-    .whea-sidebar .whea-clear-btn {
+    .whea-sidebar .whea-error-item { background: rgba(192,57,43,0.07); padding: 9px 11px; margin-bottom: 8px; border-radius: 10px; border-left: 3px solid #c0392b; font-size: 0.84em; color: #333; }
+    .whea-summary { margin-top: 10px; font-size: 0.87em; color: #555; line-height: 1.5; padding: 10px 12px; background: rgba(0,0,0,0.03); border-radius: 10px; }
+
+    /* About sidebar */
+    .about-sidebar h4 { color: #0056b3; margin: 16px 0 6px; font-weight: 800; font-size: 0.88em; text-transform: uppercase; letter-spacing: 0.04em; }
+    .about-sidebar p { font-size: 0.87em; color: #555; line-height: 1.6; }
+    .about-sidebar .info-section { margin-top: 12px; padding: 13px 14px; background: rgba(0,86,179,0.04); border-radius: 12px; border-left: 3px solid #007bff; }
+    .about-sidebar .info-section p { margin: 5px 0; }
+
+    /* ── Export buttons ── */
+    .export-btn {
+        border-radius: 9px !important;
+        font-weight: 700 !important;
+        font-size: 0.84em !important;
+        transition: all 0.18s !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+        padding: 9px 16px !important;
+    }
+    .export-btn:hover:not(:disabled) { transform: translateY(-2px) !important; box-shadow: 0 5px 14px rgba(0,0,0,0.20) !important; }
+
+    /* ── Score-distribution histogram ── */
+    #cpuHistogramContainer {
+        overflow: hidden;
+        position: relative;
+        transition: height 0.25s ease, opacity 0.25s ease;
+        border-radius: 12px;
         margin-top: 14px;
-        padding: 8px 10px;
-        border-radius: 4px;
-        border: none;
-        cursor: pointer;
-        background: #d9534f;
-        color: #fff;
-        font-weight: 600;
+        padding: 12px 14px;
+        background: rgba(0,0,0,0.03);
+        border: 1px solid rgba(0,0,0,0.07);
     }
-    .whea-sidebar .whea-clear-btn:hover { background: #c9302c; }
-    .whea-summary { margin-top: 12px; font-size: 0.9em; color: #666; line-height: 1.4; padding: 10px; background-color: #f5f5f5; border-radius: 3px; }
-
-    /* About Sidebar */
-    .about-sidebar {
-        position: fixed;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 320px;
-        max-width: 90%;
-        background: #ffffff;
-        box-shadow: -6px 0 18px rgba(0,0,0,0.15);
-        transform: translateX(100%);
-        transition: transform 0.25s ease-in-out;
-        z-index: 9998;
-        padding: 18px;
-        box-sizing: border-box;
-        overflow-y: auto;
+    #cpuHistogramContainer.faded { opacity: 0.35; pointer-events: none; }
+    .histogram-hidden {
+        height: 0 !important; min-height: 0 !important; max-height: 0 !important;
+        padding: 0 !important; margin: 0 !important; opacity: 0; pointer-events: none;
     }
+    #benchmarkHistogram { width: 100% !important; height: 160px !important; max-height: 160px !important; min-height: 160px !important; display: block; margin: 0 auto; }
 
-    .about-sidebar.open { transform: translateX(0%); }
-    .about-sidebar h3 { margin-top: 0; color: #0056b3; }
-    .about-sidebar h4 { color: #0056b3; margin-top: 16px; margin-bottom: 8px; }
-    .about-sidebar p { font-size: 0.9em; color: #666; line-height: 1.5; }
-    .about-sidebar .info-section { margin-top: 14px; padding: 12px; background-color: #f9f9f9; border-radius: 4px; border-left: 3px solid #0056b3; }
-    .about-sidebar .info-section p { margin: 6px 0; font-size: 0.9em; }
-
-#cpuHistogramContainer {
-        transition: opacity 0.3s;
-    }
-
-    #cpuHistogramContainer.faded {
-        opacity: 0.35;
-        pointer-events: none;
-    }
-
-    .histogram-toggle-row {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 2px;
-    }
-
+    .histogram-toggle-row { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 4px; }
     .histogram-toggle-row button {
-        background: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 2px 10px;
-        font-size: 12px;
-        cursor: pointer;
-        opacity: 0.85;
-        transition: background 0.2s, opacity 0.2s;
+        background: #007bff; color: #fff; border: none; border-radius: 7px;
+        padding: 3px 12px; font-size: 11px; cursor: pointer; font-weight: 700;
+        transition: background 0.18s; opacity: 0.9;
     }
-    .histogram-toggle-row button.active {
-        background: #0056b3;
-        opacity: 1;
-    }
-    .histogram-toggle-row button:hover {
-        background: #0056b3;
-        opacity: 1;
-    }
-    .histogram-run-label {
-        font-size: 12px;
-        color: #888;
-        margin-right: auto;
-        margin-left: 2px;
-        margin-top: 10px;
-        padding: 8px;
-        border-radius: 8px;
-        background: rgba(255,255,255,0.03);
-    }
+    .histogram-toggle-row button.active, .histogram-toggle-row button:hover { background: #0056b3; opacity: 1; }
+    .histogram-run-label { font-size: 11px; color: #888; margin-right: auto; }
 
-#cpuHistogramContainer {
-    overflow: hidden;
-    position: relative;
-    transition: height 0.2s;
-}
-.histogram-hidden {
-    height: 0 !important;
-    min-height: 0 !important;
-    max-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    opacity: 0;
-    pointer-events: none;
-}
-#benchmarkHistogram {
-    width: 100% !important;
-    height: 160px !important;
-    max-height: 160px !important;
-    min-height: 160px !important;
-    display: block;
-    margin: 0 auto;
-}
+    .histogramHeader { display: flex; justify-content: space-between; align-items: center; font-size: 11px; margin-bottom: 4px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .histogramHeader button { background: rgba(0,0,0,0.06); border: none; color: #555; padding: 2px 8px; border-radius: 6px; cursor: pointer; transition: background 0.18s; }
+    .histogramHeader button:hover { background: rgba(0,0,0,0.12); }
+    #benchmarkStatsDisplay { font-size: 11px; margin-top: 6px; padding: 6px 8px; background: rgba(0,0,0,0.04); border-radius: 7px; text-align: center; color: #555; }
 
-.histogramHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    margin-bottom: 4px;
-}
-
-.histogramHeader button {
-    background: rgba(255,255,255,0.08);
-    border: none;
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.histogramHeader button:hover {
-    background: rgba(255,255,255,0.15);
-}
+    /* ── Benchmarks sidebar extras ── */
+    #scoreTypeSelect { padding: 6px 10px; font-size: 0.88em; border: 1.5px solid #c5d3e8; border-radius: 9px; background: rgba(255,255,255,0.85); outline: none; cursor: pointer; }
+    #scoreTypeSelect:focus { border-color: #007bff; box-shadow: 0 0 0 3px rgba(0,123,255,0.14); }
 
 </style>
 
@@ -943,17 +1013,16 @@ function StartStaticInfoFetch() {
     // Fetch GPU info
     hostInvoke('getGPUModel', {}).then(function (result) {
         console.log('GPU Info received:', result);
+        var gpuModelEl = document.getElementById("gpuModel");
         if (result && result.gpuModel) {
-            document.getElementById("gpuModel").innerText = result.gpuModel;
-            document.getElementById("gpuModel").style.color = "#28a745";
+            if (gpuModelEl) { gpuModelEl.innerText = result.gpuModel; gpuModelEl.style.color = "#28a745"; }
         } else {
-            document.getElementById("gpuModel").innerText = "GPU Not Detected";
-            document.getElementById("gpuModel").style.color = "#ffc107";
+            if (gpuModelEl) { gpuModelEl.innerText = "GPU Not Detected"; gpuModelEl.style.color = "#ffc107"; }
         }
     }).catch(function (err) {
         console.error('GPU fetch error:', err);
-        document.getElementById("gpuModel").innerText = "GPU Detection Error";
-        document.getElementById("gpuModel").style.color = "#dc3545";
+        var gpuModelEl = document.getElementById("gpuModel");
+        if (gpuModelEl) { gpuModelEl.innerText = "GPU Detection Error"; gpuModelEl.style.color = "#dc3545"; }
     });
 }
 
@@ -1862,7 +1931,7 @@ function ExportGPUBenchmarkScore() {
     var selectedResolution = document.getElementById("gpuResolutionSelector").value;
     
     var exportData = {
-        version: "1.9.3",
+        version: "1.9.6",
         exportDate: lastGPUBenchmarkTimestamp || new Date().toISOString(),
         scoreType: "gpu_pathtracer",
         renderTime: parseFloat(lastGPUScore.toFixed(2)),
@@ -1872,8 +1941,8 @@ function ExportGPUBenchmarkScore() {
             sceneFeatures: ["Glass Reflections", "Rough Textures", "Complex Lighting"]
         },
         hardware: {
-            gpu: document.getElementById("gpuModel").innerText || "Unknown GPU",
-            vram: document.getElementById("gpuVRAM").innerText || "Unknown"
+            gpu: (document.getElementById("gpuModel") || {}).innerText || "Unknown GPU",
+            vram: (document.getElementById("gpuVRAM") || {}).innerText || "Unknown"
         }
     };
     
@@ -2126,17 +2195,17 @@ function ToggleAlerts() {
 
 // --- Benchmarks Chart Data & Initialization ---
 var cpuBenchmarkData = [
-    { cpu: 'i7-4770K', score: 37 },
-    { cpu: 'i5-7200U', score: 31.5 },
-    { cpu: 'N200', score: 33 },
-    { cpu: 'FX-4300', score: 19 },
-    { cpu: 'Core 5 210H', score: 60 },
-    { cpu: 'i7-6700', score: 39.5 },
-    { cpu: 'Ryzen 7 7700X', score: 65 },
-    { cpu: 'Ryzen 5 7600X', score: 65 },
-    { cpu: 'Ryzen 5 3600', score: 41 },
-    { cpu: 'i7-5960X 4.3GHz', score: 43.5 },
-    { cpu: 'Ryzen 9 9950X', score: 72 }
+    { cpu: 'i7-4770K', score: 36.5 },
+    { cpu: 'i5-7200U', score: 23 },
+    { cpu: 'N200', score: 23.5 },
+    { cpu: 'FX-4300', score: 18 },
+    { cpu: 'Core 5 210H', score: 54 },
+    { cpu: 'i7-6700', score: 38 },
+    { cpu: 'Ryzen 7 7700X', score: 59 },
+    { cpu: 'Ryzen 5 7600X', score: 58.5 },
+    { cpu: 'Ryzen 5 3600', score: 39 },
+    { cpu: 'i7-5960X 4.3GHz', score: 39.5 },
+    { cpu: 'Ryzen 9 9950X', score: 65 }
 ];
 
 // Multi-core benchmark data (empty for now - will be populated as users test)
@@ -2238,7 +2307,7 @@ async function ExportBenchmarkScore(scoreType) {
         
         // Create export object
         var exportData = {
-            version: "1.9.3",
+            version: "1.9.6",
             exportDate: lastBenchmarkTimestamp || new Date().toISOString(),
             scoreType: scoreType,
             score: parseFloat(score.toFixed(2)),
@@ -2420,9 +2489,11 @@ function CreateBenchmarksChart(isMultiCore) {
 // --- Hardware monitoring charts ---
 var hwCharts = { cpu: null, ram: null };
 var hwSeriesMax = 25;
+var hwPollStarted = false;
 
 function CreateHardwareCharts() {
     if (typeof Chart === 'undefined') return;
+    if (hwCharts.cpu !== null || hwCharts.ram !== null) return;
     // create empty datasets
     try {
         var cctx = document.getElementById('cpuChart');
@@ -2431,7 +2502,7 @@ function CreateHardwareCharts() {
 
         hwCharts.cpu = new Chart(cctx, {
             type: 'line',
-            data: { labels: [], datasets: [{ label: 'CPU Utilization (%)', data: [], borderColor: '#4caf50', backgroundColor: 'rgba(76,175,80,0.06)', fill: true }] },
+            data: { labels: [], datasets: [{ label: 'CPU Utilization (%)', data: [], borderColor: '#4caf50', backgroundColor: 'rgba(76,175,80,0.06)', fill: true, spanGaps: true, tension: 0.2, pointRadius: 0 }] },
             options: {
                 animation: false,
                 responsive: true,
@@ -2456,7 +2527,10 @@ function CreateHardwareCharts() {
                         data: [],
                         borderColor: '#ff9800',
                         backgroundColor: 'rgba(255,152,0,0.06)',
-                        fill: true
+                        fill: true,
+                        spanGaps: true,
+                        tension: 0.2,
+                        pointRadius: 0
                     }
                 ]
             },
@@ -2481,13 +2555,14 @@ function CreateHardwareCharts() {
 }
 
 function StartHardwarePoll() {
-    // poll every second
+    if (hwPollStarted) return;
+    hwPollStarted = true;
     setInterval(async function () {
         try {
             var m = await hostInvoke('getHardwareMetrics', {});
             var ts = new Date();
             var label = ts.getHours().toString().padStart(2,'0')+ ':' + ts.getMinutes().toString().padStart(2,'0')+ ':' + ts.getSeconds().toString().padStart(2,'0');
-            if (m) {
+            if (m && m.success) {
                 if (typeof m.RamTotalGB === 'number' && !isNaN(m.RamTotalGB)) {
                     window.lastRamMetrics = {
                         totalGB: m.RamTotalGB,
@@ -2496,11 +2571,11 @@ function StartHardwarePoll() {
                     };
                 }
                 if (hwCharts.cpu) {
-                    var cpuVal = (m.CpuLoad !== null && m.CpuLoad !== undefined) ? Number(m.CpuLoad) : null;
+                    var cpuVal = (typeof m.CpuLoad === 'number' && isFinite(m.CpuLoad)) ? m.CpuLoad : null;
                     pushPoint(hwCharts.cpu, label, cpuVal);
                 }
                 if (hwCharts.ram) {
-                    var ramVal = (m.RamUsagePercent !== null && m.RamUsagePercent !== undefined) ? Number(m.RamUsagePercent) : null;
+                    var ramVal = (typeof m.RamUsagePercent === 'number' && isFinite(m.RamUsagePercent)) ? m.RamUsagePercent : null;
                     pushPoint(hwCharts.ram, label, ramVal);
                 }
             }
@@ -2838,7 +2913,7 @@ function DumpSensors() {
 
         <div class="info-section">
             <h4 style="margin-top: 0;">Version</h4>
-            <p>Xeno CPU Utility v1.9.3</p>
+            <p>Xeno CPU Utility v1.9.6</p>
         </div>
 
         <div class="info-section">
